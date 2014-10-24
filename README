@@ -1,0 +1,16 @@
+WHAT IS THIS?
+=============
+This is a gnome-shell extension to display information about upcoming
+or ongoing public transport strikes in Rome.
+
+The extension is licenced under LGPL 2 or later.
+
+HOW TO INSTALL
+==============
+The best way to get this extension is by visiting its page on
+extensions.gnome.org: http://extensions.gnome.org/extension/XXX
+
+If you need to modify the source, then the git repository is the best
+solution: http://github.com/jonnylamb/shell-sciopero/
+Type "make force-install" to install the extension, then follow the
+instructions printed on screen.

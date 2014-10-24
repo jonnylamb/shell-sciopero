@@ -1,0 +1,7 @@
+{
+    "shell-version": ["3.14"],
+    "uuid": "sciopero@shell-extensions.jonnylamb.com",
+    "name": "Roma Sciopero",
+    "description": "Shows upcoming and ongoing public transport strikes in Rome.",
+    "url": "http://github.com/jonnylamb/shell-sciopero/"
+}
