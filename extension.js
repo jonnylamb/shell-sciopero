@@ -35,7 +35,6 @@ const ICON_ONGOING = "dialog-warning";
 let sciopero = null;
 
 let debugEnabled = false;
-let alwaysShow = false;
 
 function debug(message) {
     if (debugEnabled)
@@ -143,7 +142,7 @@ const Sciopero = new Lang.Class({
             this.icon.set_icon_name(ICON_UPCOMING);
         }
 
-        this.actor.visible = alwaysShow || ongoing || upcoming;
+        this.actor.visible = ongoing || upcoming;
 
         debug("finished parsing");
     }
@@ -153,11 +152,6 @@ function init() {
     if (GLib.getenv("SCIOPERO_DEBUG")) {
         debugEnabled = true;
         debug("initialising");
-    }
-
-    if (GLib.getenv("SCIOPERO_ALWAYS_SHOW")) {
-        alwaysShow = true;
-        debug("always showing icon");
     }
 }
 
