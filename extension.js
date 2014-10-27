@@ -19,6 +19,7 @@
 const BoxPointer = imports.ui.boxpointer;
 const GLib = imports.gi.GLib;
 const Gdk = imports.gi.Gdk;
+const GnomeDesktop = imports.gi.GnomeDesktop;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const Main = imports.ui.main;
@@ -55,6 +56,18 @@ const Sciopero = new Lang.Class({
 
         this.actor.visible = false;
         this.actor.add_actor(this.icon);
+
+        this.clock = new GnomeDesktop.WallClock();
+        this.clock_notify_id = this.clock.connect("notify::clock",
+            Lang.bind(this, function() {
+                let d = new Date();
+                if (d.getHours() == 0 &&
+                    d.getMinutes() == 0 &&
+                    d.getSeconds() == 0) {
+                    debug("new day, updating information");
+                    this.update();
+                }
+            }));
 
         this.update();
     },
