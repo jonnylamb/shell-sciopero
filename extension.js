@@ -76,12 +76,11 @@ const Sciopero = new Lang.Class({
         this.parse(j);
     },
 
-    addElement: function(title, func) {
-
+    addElement: function(title, link) {
         let menuItem = new PopupMenu.PopupMenuItem(title);
         menuItem.connect('activate', Lang.bind(this, function() {
             this.menu.close(BoxPointer.PopupAnimation.NONE);
-            func();
+            Gtk.show_uri(null, link, Gdk.CURRENT_TIME);
         }));
         this.menu.addMenuItem(menuItem);
 
@@ -130,9 +129,7 @@ const Sciopero = new Lang.Class({
             }
 
             if (upcoming || ongoing) {
-                this.addElement(item.title, function() {
-                    Gtk.show_uri(null, item.link, Gdk.CURRENT_TIME);
-                });
+                this.addElement(item.title, item.link);
             }
         }
 
