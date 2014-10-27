@@ -175,6 +175,11 @@ function enable() {
 function disable() {
     debug("disabling");
 
+    // no destructor, so disconnect from notify::clock. this isn't really
+    // necessary because sciopero.clock is about to get destroyed when
+    // sciopero is destroyed.
+    sciopero.clock.disconnect(sciopero.clock_notify_id);
+
     sciopero.destroy();
     sciopero = null;
 }
